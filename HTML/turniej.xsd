@@ -1,0 +1,216 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:annotation>
+      <xsd:documentation xml:lang="pl">
+         XML Schema do pliku turniej.
+      </xsd:documentation>
+   </xsd:annotation>
+
+   <xsd:element name="turnieje" type="turnieje_typ"/>
+
+	<xsd:complexType name="turnieje_typ">
+		<xsd:sequence>
+			<xsd:element ref="logo" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="turniej" minOccurs="0" maxOccurs="unbounded">
+			<xsd:complexType>
+      		<xsd:sequence>
+         		<xsd:element name="miejsce" type="miejsce_typ"/>
+        		<xsd:element name="dane_turnieju" type="dane_turnieju_typ"/>
+         		<xsd:element name="lista_zawodnikow" type="lista_zawodnikow_typ"/>
+         		<xsd:element name="lista_par" type="lista_par_typ"/>
+         		<xsd:element name="nagrody" type="nagrody_typ"/>
+      		</xsd:sequence>
+     		<xsd:attribute name="data" type="xsd:date"/>
+   			</xsd:complexType>
+   		</xsd:element>
+   		</xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="miejsce_typ">
+      <xsd:sequence>
+         <xsd:element name="miasto" type="xsd:string"/>
+         <xsd:element name="lokal" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+    <xsd:complexType name="dane_turnieju_typ">
+      <xsd:sequence>
+         <xsd:element name="sedzia" type="sedzia_typ"/>
+         <xsd:element name="zapis" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="lista_zawodnikow_typ">
+   <xsd:sequence>
+     <xsd:element name="zawodnikzeznizka"  type="zawodnikzeznizka_typ" minOccurs="0" maxOccurs="unbounded"/>
+     <xsd:element name="zawodnikbezznizki"  type="zawodnikbezznizki_typ" minOccurs="0" maxOccurs="unbounded"/>
+   </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="lista_par_typ">
+    <xsd:sequence>
+        <xsd:element name="para" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+         	<xsd:sequence>
+           		<xsd:element name="zawodnik1">
+           		<xsd:complexType>
+           			<xsd:attribute ref="pid"/>
+           		</xsd:complexType>
+           		</xsd:element>
+         		<xsd:element name="zawodnik2">
+         		<xsd:complexType>
+           			<xsd:attribute ref="pid"/>
+           		</xsd:complexType>	
+           	</xsd:element>
+        	</xsd:sequence>
+        	<xsd:attribute name="nr" type="xsd:decimal"/>
+       	</xsd:complexType>
+       </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+
+<xsd:attribute name="pid">
+<xsd:simpleType>
+    <xsd:restriction base="xsd:integer">
+    	<xsd:minInclusive value="0"/>
+    	<xsd:maxInclusive value="18000"/>
+    </xsd:restriction>
+</xsd:simpleType>
+</xsd:attribute>
+
+<xsd:element name="imie" type="xsd:string"/>
+<xsd:element name="nazwisko" type="xsd:string"/>
+
+<xsd:complexType name="sedzia_typ">
+	<xsd:sequence>
+		<xsd:element ref="imie" />
+		<xsd:element ref="nazwisko" />
+	</xsd:sequence>
+    <xsd:attribute ref="pid"/>
+</xsd:complexType>
+
+
+<xsd:complexType name="zawodnikbezznizki_typ">
+  <xsd:sequence>
+    <xsd:group ref="zawodnik"/>
+  </xsd:sequence>
+  <xsd:attribute ref="pid"/>
+</xsd:complexType>
+
+<xsd:complexType name="zawodnikzeznizka_typ">
+  <xsd:complexContent>
+    <xsd:extension base="zawodnikbezznizki_typ">
+      <xsd:sequence>
+        <xsd:element name="znizka" type="znizka_typ"/>
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+  
+</xsd:complexType>
+
+<xsd:group name="zawodnik">
+    <xsd:sequence>
+    	<xsd:element ref="imie" />
+        <xsd:element ref="nazwisko" />
+        <xsd:element name="wk" type="wk_typ"/>
+        <xsd:element name="okreg" type="okreg_typ"/>
+        <xsd:element name="skladka" type="skladka_typ"/>
+        <xsd:element name="link" type="link_typ"/>
+    </xsd:sequence>
+</xsd:group>
+
+<xsd:simpleType name="okreg_typ">
+    <xsd:restriction base="xsd:string">
+    	<xsd:pattern value="[A-Z][A-Z]"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="skladka_typ">
+    <xsd:restriction base="xsd:string"> 
+      <xsd:minLength value="9"/>
+      <xsd:maxLength value="12"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="wk_typ">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="0.0"/>
+            <xsd:enumeration value="0.5"/>
+            <xsd:enumeration value="1.0"/>
+            <xsd:enumeration value="1.5"/>
+            <xsd:enumeration value="2.0"/>
+            <xsd:enumeration value="2.5"/>
+            <xsd:enumeration value="3.0"/>
+            <xsd:enumeration value="4.0"/>
+            <xsd:enumeration value="5.0"/>
+            <xsd:enumeration value="7.0"/>
+            <xsd:enumeration value="9.0"/>
+            <xsd:enumeration value="11.0"/>
+            <xsd:enumeration value="12.0"/>
+            <xsd:enumeration value="13.0"/>
+            <xsd:enumeration value="15.0"/>
+            <xsd:enumeration value="17.0"/>
+            <xsd:enumeration value="18.0"/>
+            <xsd:enumeration value="19.0"/>
+            <xsd:enumeration value="21.0"/>
+            <xsd:enumeration value="24.0"/>
+        </xsd:restriction>
+</xsd:simpleType>
+
+	<xsd:complexType name="nagrody_typ">
+			    <xsd:attribute name="para_nr">
+	        <xsd:simpleType>
+	            <xsd:list itemType="xsd:decimal" />
+	        </xsd:simpleType>
+	    </xsd:attribute>
+	</xsd:complexType>
+
+
+   <xsd:complexType name="link_typ">
+    <xsd:attribute name="href">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:anyURI"/>
+        </xsd:simpleType>
+    </xsd:attribute>
+   </xsd:complexType>
+
+<xsd:simpleType name="znizka_typ">
+    <xsd:union memberTypes="znizkaprocent znizkanazwa" />
+</xsd:simpleType>
+
+<xsd:simpleType name="znizkaprocent">
+  <xsd:restriction base="xsd:integer"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="znizkanazwa">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="junior"/>
+    <xsd:enumeration value="senior"/>
+    <xsd:enumeration value="młodzież"/>
+    <xsd:enumeration value="nestor"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:notation name="gif" public="image/gif" system="view.exe"/>
+<xsd:notation name="jpg" public="image/jpeg" system="view.exe"/>
+<xsd:notation name="png" public="image/png" system="view.exe"/>
+
+<xsd:element name="logo">
+    <xsd:complexType>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:anyURI" >
+                <xsd:attribute name="typ">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:NOTATION">
+                            <xsd:enumeration value="gif"/>
+                            <xsd:enumeration value="jpg"/>
+                            <xsd:enumeration value="png"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

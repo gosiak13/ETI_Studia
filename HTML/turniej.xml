@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="projekt2.xsl"?>
+
+<turnieje>
+
+<logo typ="jpg">
+	http://www.pzbs.pl/images/pzbs-logo-big.jpg
+</logo>
+<logo typ="png">
+	http://bridge.gda.pl/html/liga/2014-15/images/wzbs.png
+</logo>
+<logo typ="png">
+	http://www.pzbs.pl/images/stories/bridgenet_logo.png
+</logo>
+<logo typ="png">
+	https://bridgespider.com/files/logo.png
+</logo>
+
+<turniej data="2015-12-10">
+	<miejsce> 
+		<miasto>Gdańsk</miasto>
+		<lokal>MAKABI</lokal>
+	</miejsce>
+
+	<dane_turnieju>
+		<sedzia pid="13650">
+			<imie>Marcin</imie>
+			<nazwisko>Wasłowicz</nazwisko>
+		</sedzia>
+		<zapis>impy</zapis>
+	</dane_turnieju>
+
+	<lista_zawodnikow>
+
+		<zawodnikzeznizka pid="11726">
+			<imie>Ryszard</imie>
+			<nazwisko>Kamiński</nazwisko>
+			<wk>3.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=11726"/>
+			<znizka>senior</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikzeznizka pid="04672">
+			<imie>Andrzej</imie>
+			<nazwisko>Pella</nazwisko>
+			<wk>3.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=4672"/>
+			<znizka>nestor</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikzeznizka pid="13707">
+			<imie>Mirosław</imie>
+			<nazwisko>Małypan</nazwisko>
+			<wk>3.0</wk>
+			<okreg>PM</okreg>
+			<skladka>niezaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=13707"/>
+			<znizka>senior</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikzeznizka pid="15802">
+			<imie>Adam</imie>
+			<nazwisko>Suchodolski</nazwisko>
+			<wk>2.5</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=15802"/>
+			<znizka>junior</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikzeznizka pid="15803">
+			<imie>Monika</imie>
+			<nazwisko>Suchodolska</nazwisko>
+			<wk>2.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?p=21&amp;pid_search=15803"/>
+			<znizka>junior</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikzeznizka pid="14359">
+			<imie>Jerzy</imie>
+			<nazwisko>Maciejak</nazwisko>
+			<wk>1.5</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=14359"/>
+			<znizka>nestor</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikzeznizka pid="09034">
+			<imie>Janusz</imie>
+			<nazwisko>Warchoł</nazwisko>
+			<wk>4.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=9034"/>
+			<znizka>nestor</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikzeznizka pid="04527">
+			<imie>Krzysztof</imie>
+			<nazwisko>Antas</nazwisko>
+			<wk>19.0</wk>
+			<okreg>WP</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=4527"/>
+			<znizka>senior</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikzeznizka pid="04593">
+			<imie>Wacław</imie>
+			<nazwisko>Janicki</nazwisko>
+			<wk>17.0</wk>
+			<okreg>WP</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=4593"/>
+			<znizka>nestor</znizka>
+		</zawodnikzeznizka>
+
+		<zawodnikbezznizki pid="12983">
+			<imie>Janusz</imie>
+			<nazwisko>Kobylarski</nazwisko>
+			<wk>4.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=12983"/>
+		</zawodnikbezznizki>
+
+		<zawodnikbezznizki pid="14845">
+			<imie>Robert</imie>
+			<nazwisko>Krawczyk</nazwisko>
+			<wk>3.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=14845"/>
+		</zawodnikbezznizki>
+
+		<zawodnikbezznizki pid="08128">
+			<imie>Zenon</imie>
+			<nazwisko>Betański</nazwisko>
+			<wk>4.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=8128"/>
+		</zawodnikbezznizki>
+
+	<zawodnikbezznizki pid="04621">
+			<imie>Marek</imie>
+			<nazwisko>Kryniewski</nazwisko>
+			<wk>5.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=4621"/>
+		</zawodnikbezznizki>
+
+		<zawodnikbezznizki pid="08119">
+			<imie>Waldemar</imie>
+			<nazwisko>Warzała</nazwisko>
+			<wk>11.0</wk>
+			<okreg>PM</okreg>
+			<skladka>zaplacona</skladka>
+			<link href="http://www.msc.com.pl/cezar/index.php?s=&amp;mycl=0&amp;p=21&amp;r=8119"/>
+		</zawodnikbezznizki>
+
+	</lista_zawodnikow>
+
+
+	
+	<lista_par>
+		<para nr="1">
+			<zawodnik1 pid="15802"/>
+			<zawodnik2 pid="15803"/>
+		</para>
+		<para nr="2">
+			<zawodnik1 pid="12983"/>
+			<zawodnik2 pid="14845"/>
+		</para>
+		<para nr="3">
+			<zawodnik1 pid="11726"/>
+			<zawodnik2 pid="04672"/>
+		</para>
+		<para nr="4">
+			<zawodnik1 pid="08128"/>
+			<zawodnik2 pid="04621"/>
+		</para>
+		<para nr="5">
+			<zawodnik1 pid="14359"/>
+			<zawodnik2 pid="09034"/>
+		</para>
+		<para nr="6">
+			<zawodnik1 pid="04527"/>
+			<zawodnik2 pid="04593"/>
+		</para>
+		<para nr="7">
+			<zawodnik1 pid="13707"/>
+			<zawodnik2 pid="08119"/>
+		</para>
+	</lista_par>
+
+	<nagrody para_nr="3 6 4 1"/>
+
+</turniej>
+</turnieje>
