@@ -7,40 +7,26 @@ title The fun Subroutine    (lorentzK.asm)
 public _lorentzK
 
 .code
-_lorentzK proc near   ; Zamiana w tablicy ma³ych liter na wielkie
-    push ebp
-    mov ebp, esp
-
-    mov esi, dword PTR[ebp+8]	; pierwszy argument funkcji
-    mov ecx, 100h		; maksymalny zakres poszukiwania koñca ³añcucha  znaków -> 256 znakow
-	mov edi, 0			; licznik d³ugoœci ³añcucha
-ptl:
-	mov dl, [esi]
-	cmp dl, 0h
-	je dalej
-	inc esi
-	inc edi
-	loop ptl
-dalej:				
-	mov esi, dword PTR[ebp+12]	; wyznaczenie drugiego argumentu funkcji - d³ugoœci ³añcucha
-	mov [esi], edi
-
-	mov ecx, edi				; d³ugoœæ pêtli = d³ugoœci ³añcucha znaków
-    mov esi, dword PTR[ebp+8]
-ptl1:
-	mov dl, [esi]
-	cmp dl, 'a'
-	jb nierob
-	cmp dl, 'z'
-	ja nierob
-	sub dl, 20h
-nierob:
-    mov [esi], dl
-	inc esi
-	loop ptl1
-	 
-	mov eax, 0h		; return 0
-    pop ebp
+_lorentzK proc near   ; (height - 100 - ((height - 150) / 2)
+    push   ebp
+    mov    ebp,esp
+    mov		eax,  sdword PTR[ebp+8]	;first argument - height 
+    mov		ebx, 10
+	mul     ebx
+	mov     ebx,  1000
+    sub     eax, ebx
+	push    eax
+	mov		eax,  sdword PTR[ebp+8]	;first argument - height 
+    mov		ebx, 10
+	mul     ebx
+	mov     ebx,  1500
+	sub		eax, ebx
+	mov     ebx, 2
+	div     ebx
+	pop ebx
+	sub   ebx, eax
+	mov   eax, ebx
+    pop    ebp
     ret                   
 _lorentzK endp
 end

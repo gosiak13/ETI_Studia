@@ -1,4 +1,4 @@
-title The fun Subroutine    (fun2.asm)
+title The fun Subroutine    (creff.asm)
 
 ; This subroutine links to Visual C++ 6.0.
 
@@ -7,41 +7,22 @@ title The fun Subroutine    (fun2.asm)
 public _creff
 
 .code
-_creff proc near   ; Zamiana w tablicy ma³ych liter na wielkie
-    push ebp
-    mov ebp, esp
+_creff proc near   ;	creffFormula(wzrost,wiek);
 
-    mov esi, dword PTR[ebp+8]	; pierwszy argument funkcji
-    mov ecx, 100h		; maksymalny zakres poszukiwania koñca ³añcucha  znaków -> 256 znakow
-	mov edi, 0			; licznik d³ugoœci ³añcucha
-ptl:
-	mov dl, [esi]
-	cmp dl, 0h
-	je dalej
-	inc esi
-	inc edi
-	loop ptl
-dalej:				
-	mov esi, dword PTR[ebp+12]	; wyznaczenie drugiego argumentu funkcji - d³ugoœci ³añcucha
-	mov [esi], edi
-
-	mov ecx, edi				; d³ugoœæ pêtli = d³ugoœci ³añcucha znaków
-    mov esi, dword PTR[ebp+8]
-ptl1:
-	mov dl, [esi]
-	cmp dl, 'a'
-	jb nierob
-	cmp dl, 'z'
-	ja nierob
-	sub dl, 20h
-nierob:
-    mov [esi], dl
-	inc esi
-	loop ptl1
-	 
-	mov eax, 0h		; return 0
-    pop ebp
-    ret                   
+    push   ebp
+    mov    ebp,esp
+    mov		eax,  sdword PTR[ebp+8]	;first argument - height 
+	mov		ebx, 100 
+	sub		eax, ebx
+	mov     ebx, 10
+	mul     ebx
+    mov		ebx, sdword PTR[ebp+12]	;second argument - age
+	add     eax,  ebx
+	mov     ebx, 9
+	mul     ebx
+    pop    ebp
+    ret             
+	      
 _creff endp
 end
 

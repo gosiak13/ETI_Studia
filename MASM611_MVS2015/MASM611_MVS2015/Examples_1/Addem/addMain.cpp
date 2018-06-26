@@ -1,13 +1,18 @@
 // Addem Main Program      (AddMain.cpp) 
 
 #include <iostream>
+#include <string>
+#include <stdio.h>  
+
 using namespace std;
 
-extern "C" int bmi(int p1, int p2, int p3);
-extern "C" int broca(int x, int y, int z);
-extern "C" int creff(char *strx, int *Slen);
-//extern "C" int lorentzK(char *strx, int *Slen);
-//extern "C" int lorentzM(char *strx, int *Slen);
+extern "C" int bmi(int p1, int p2);
+extern "C" int broca(int x);
+extern "C" int creff(int height, int wiek);
+extern "C" int lorentzK(int x);
+extern "C" int lorentzM(int x);
+
+//extern "C" void print();
 
 
 int main()
@@ -20,10 +25,29 @@ int main()
 	int p1, p2, p3;
 	int i;
 	int strlen;
+	int wzrost, waga, wiek;
+	char cPlec;
+	float wynikBMI = 0.0;
+	float wBroca = 0.0;
+	float wCreff = 0.0;
+	int wLorentzM;
+	int wLorentzK;
+	int wagaSrednia = 0;
+	int wagaB;
+	int wagaC;
+	int wagaL;
 	
 	//*****************************************************
-	
-	float wynikBMI = bmi(10, 15, 25);
+
+	cout << "Jaki jest Twoj wzrost [cm]?" << endl;
+	cin >> wzrost;
+	cout << endl << "Ile wazysz [kg]?" << endl;
+	cin >> waga;
+	cout << endl << "Ile masz lat?" << endl;
+	cin >> wiek;
+	cout << endl << "Jakiej jestes plci? kobieta - k, mezczyzna - m" << endl;
+	cin >> cPlec;
+
 	cout << "Total = " << wynikBMI << endl << endl;
 	cout << "Klasyfikacja wskaznika BMI:" << endl;
 	cout << "< 16				wyglodzenie" << endl;
@@ -36,69 +60,175 @@ int main()
 	cout << ">= 40				III stopien otylosci" << endl;
 	cout << endl;
 
-	wynikBMI = 23.00;
+	wynikBMI = bmi(waga, wzrost);
+	wynikBMI = wynikBMI / 10;
 	cout << "Twoje BMI wynosi: " << wynikBMI << ". Jest to: " << endl;
+	wynikBMI = round(wynikBMI*10);
+	int intbmi = (int)wynikBMI;
+	//cout << intbmi << endl;
 
-	
-	if (wynikBMI < 16) cout << "wyglodzenie";
-	else if (wynikBMI >= 16 && wynikBMI < 17) cout << "wychudzenie" << endl;
+	char t1[BUFSIZE] = "wyglodzenie";
+	char t2[BUFSIZE] = "wychudzenie";
+	char t3[BUFSIZE] = "niedowaga";
+	char t4[BUFSIZE] = "wartosc prawidlowa";
+	char t5[BUFSIZE] = "nadwaga";
+	char t6[BUFSIZE] = "I stopien otylosci";
+	char t7[BUFSIZE] = "II stopien otylosci";
+	char t8[BUFSIZE] = "III stopien otylosci";
+
+	count = 20;
+
+		__asm
+		{
+			mov eax, 160
+			cmp intbmi, eax
+			jb przepisz1
+
+			mov eax, 170
+			cmp intbmi, eax
+			jb przepisz2
+
+			mov eax, 185
+			cmp intbmi, eax
+			jb przepisz3
+
+			mov eax, 250
+			cmp intbmi, eax
+			jb przepisz4
+
+			mov eax, 300
+			cmp intbmi, eax
+			jb przepisz5
+
+			mov eax, 350
+			cmp intbmi, eax
+			jb przepisz6
+
+			mov eax, 400
+			cmp intbmi, eax
+			jb przepisz7
+
+			jmp przepisz8
+			jmp wyjdz2
+
+			przepisz1:
+				lea esi, t1  // Load Effective Address str. 68, 85
+				jmp wyjdz2
+
+			przepisz2:
+				lea esi, t2  // Load Effective Address str. 68, 85
+				jmp wyjdz2
+
+			przepisz3 :
+				lea esi, t3  // Load Effective Address str. 68, 85
+				jmp wyjdz2
+
+			przepisz4 :
+				lea esi, t4  // Load Effective Address str. 68, 85
+				jmp wyjdz2
+
+			przepisz5 :
+				lea esi, t5  // Load Effective Address str. 68, 85
+				jmp wyjdz2
+
+			przepisz6 :
+				lea esi, t6  // Load Effective Address str. 68, 85
+				jmp wyjdz2
+
+			przepisz7 :
+				lea esi, t7  // Load Effective Address str. 68, 85
+				jmp wyjdz2
+
+			przepisz8 :
+				lea esi, t8  // Load Effective Address str. 68, 85
+				jmp wyjdz2
+
+			wyjdz2:
+				lea edi, buffer
+				mov ecx, count
+				inc ecx
+				L0 : mov dl, [esi]	// kopiowanie tablicy buffer1 do buffer
+					mov[edi], dl	// ³¹cznie ze znakiem koñca linii -> '\0'
+					inc esi
+					inc edi
+					loop L0
+		}
+
+		for (int i = 0; i < 20; i++) {
+			cout << buffer[i];               
+		}   
+		cout << endl;
+		                                                                                                                                                                                                    
+    /*
+	if (wynikBMI < 16) cout << "wyglodzenie" << endl;
+    else if (wynikBMI >= 16 && wynikBMI < 17) cout << "wychudzenie" << endl;
 	else if (wynikBMI >= 17 && wynikBMI < 18.5) cout << "niedowaga" << endl;
 	else if (wynikBMI >= 18.5 && wynikBMI < 25) cout << "wartosc prawidlowa" << endl;
 	else if (wynikBMI >= 25 && wynikBMI < 30) cout << "nadwaga" << endl;
 	else if (wynikBMI >= 30 && wynikBMI < 35) cout << "I stopien otylosci" << endl;
 	else if (wynikBMI >= 35 && wynikBMI < 40) cout << "II stopien otylosci" << endl;
-	else if (wynikBMI >= 40) cout << "III stopien otylosci" << endl;
+	else if (wynikBMI >= 40) cout << "III stopien otylosci" << endl;*/
 
 	//*****************************************************
-
-	p1 = 20;  p2 = 15;  p3 = -2;
-	int wynik = broca(p1, p2, p3);
-	cout << "Wartosc funkcji w = 20*p3^2 - 100*p2 + p1" << endl;
-	cout << "dla parametrow : p1 = "  << p1 << ", p2 = " << p2 << ", p3 = " << p3 << endl;
-	cout << "wynosi ->   w = " << wynik << endl << endl;
-
-	//*****************************************************
-
-	for (count = 0; count < BUFSIZE; count++)  {
-		if (buffer1[count] == '\0')  break;
-	}
-	cout << "Dlugosc lancucha znakow w tablicy buffer1 = " << count << endl;
-	cout << "male litery \"PRZED\"  = " << buffer1 << endl;
+	cout << "Twoja idealna waga wedlug: " << endl;
+	wBroca = broca(wzrost);                                                 
+	wCreff = creff(wzrost, wiek);
+	wCreff = wCreff / 100;
+	wLorentzK = lorentzK(wzrost);
+	wLorentzM = lorentzM(wzrost);
+	int wLorentz;
 
 	__asm {
-		lea esi, buffer1  // Load Effective Address str. 68, 85
-			lea edi, buffer
-			mov ecx, count
-			inc ecx
-		L0 : mov dl, [esi]	// kopiowanie tablicy buffer1 do buffer
-			 mov[edi], dl	// ³¹cznie ze znakiem koñca linii -> '\0'
-			 inc esi
-			 inc edi
-			 loop L0
+		cmp cPlec, 'k'
+		jz przypisz1
+		cmp cPlec, 'm'
+		jz przypisz2
+		przypisz1:
+			mov eax, wLorentzK
+			mov wLorentz, eax
+			jmp wyjdz
+		przypisz2:
+			mov eax, wLorentzM
+			mov wLorentz, eax
+			jmp wyjdz
+		wyjdz:
+	}
+	//if (cPlec == 'k') wLorentz = wLorentzK;
+	//else if (cPlec == 'm') wLorentz = wLorentzM;
+	wLorentz = wLorentz / 10;
 
-		;********
-
-			lea esi, buffer1  // g³ówna petla -> pocz¹tek
-			lea edi, buffer
-			mov ecx, count
-			dec ecx
-		LA : mov dl, [esi]
-			 cmp dl, 'd' //jesli rowne 'd' podmiana dwoch kol. znakow LB
-			 jne LB
-			 mov[edi], '*'
-			 mov[edi + 1], '#'
-		LB : inc esi
-			 inc edi
-			 Loop LA			// g³ówna pêtla -> koniec
-	}	// asm
-
-	cout << "male litery \"PO   \"  = " << buffer << endl << endl;
+	cout << "Broca: " << wBroca << endl << "Creff'a: " << wCreff << endl << "Lorentz'a: " << wLorentz << endl;
 
 	//*****************************************************
+	wagaC = (int)wCreff;
+	wagaL = (int)wLorentz;
+	wagaB = (int)wBroca;
 
-	creff(buffer, &strlen);
-	cout << "Wielkie litery          = " << buffer << endl;
-	cout << "Dlugosc lancucha znakow = " << strlen << endl << endl;
+	__asm {
+		mov eax, wagaSrednia
+		mov  ebx, wagaC
+		add eax, ebx
+		mov ebx, wagaL
+		add eax, ebx
+		mov ebx, wagaC
+		add eax, ebx
+		mov ebx, 3
+		div ebx
+		mov wagaSrednia, eax
+	}   // asm
+	cout << "Srednia waga idealna: " << wagaSrednia << endl;
+
+
+	int roznica;
+	__asm {
+		mov eax, waga
+		mov  ebx, wagaSrednia
+		sub eax, ebx
+		mov roznica, eax
+	}   // asm
+
+	cout << "Roznica miedzy twoja waga a srednia idealna: " << roznica << endl;
+
 
 	//*****************************************************
 
@@ -118,13 +248,7 @@ int main()
 		L2 : mov dword PTR[esi], 1000
 			 mov dword PTR[esi + 4], 1001
 	}	// asm
-
-	cout << "Liczby = ";
-	for (i = 0; i < 10; i++) { cout << buffer2[i] << ", "; }
-	cout << endl;
-
-
-
+	
 	return 0;
 }
 
