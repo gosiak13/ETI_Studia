@@ -9,6 +9,7 @@ extern "C" int creff(char *strx, int *Slen);
 //extern "C" int lorentzK(char *strx, int *Slen);
 //extern "C" int lorentzM(char *strx, int *Slen);
 
+
 int main()
 {
 	const int BUFSIZE = 200;
